@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторная работа 3 - Все задания</title>
+    <style>
+        /* Общие стили */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border: 2px solid #d4af37;
+        }
+        h1, h2, h3 {
+            color: #d4af37;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        .task {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        .task:last-child {
+            border-bottom: none;
+        }
+        button {
+            background-color: #d4af37;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #b8860b;
+        }
+        input, select {
+            padding: 8px;
+            border: 1px solid #d4af37;
+            border-radius: 5px;
+            margin: 5px 0;
+        }
+        .result {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-left: 4px solid #d4af37;
+        }
+        .hidden {
+            display: none;
+        }
+        .resume-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid #d4af37;
+            margin: 0 auto;
+            display: block;
+            object-fit: cover;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+        }
+        th, td {
+            border: 1px solid #d4af37;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f0e6cc;
+        }
+        .toggle-content {
+            display: none;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #d4af37;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .calculator {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 5px;
+            max-width: 300px;
+            margin: 20px auto;
+        }
+        .calculator-display {
+            grid-column: span 4;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #d4af37;
+            border-radius: 5px;
+            text-align: right;
+            font-size: 1.5em;
+        }
+        .calculator-btn {
+            padding: 15px;
+            font-size: 1.2em;
+        }
+        .slider-container {
+            margin: 20px 0;
+        }
+        .slider {
+            width: 100%;
+            height: 10px;
+            -webkit-appearance: none;
+            background: #d4af37;
+            outline: none;
+            border-radius: 5px;
+        }
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #b8860b;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Лабораторная работа 3</h1>
+        
+        <!-- Задание 1 -->
+        <div class="task" id="task1">
+            <h2>Задание 1: Функции min, max и equal</h2>
+            <div>
+                <label for="num1">Число 1:</label>
+                <input type="number" id="num1" value="5">
+                <label for="num2">Число 2:</label>
+                <input type="number" id="num2" value="10"><br>
+                <button onclick="runMinFunction()">Найти минимум</button>
+                <button onclick="runMaxFunction()">Найти максимум</button>
+                <button onclick="runEqualFunction()">Проверить равенство</button>
+                <div class="result" id="task1Result"></div>
+            </div>
+        </div>
+        
+        <!-- Задание 2 -->
+        <div class="task" id="task2">
+            <h2>Задание 2: Переменные admin и name</h2>
+            <button onclick="runAdminNameTask()">Выполнить задание</button>
+            <div class="result" id="task2Result"></div>
+        </div>
+        
+        <!-- Задание 3 -->
+        <div class="task" id="task3">
+            <h2>Задание 3: Проверка возраста</h2>
+            <button onclick="checkAge()">Проверить возраст</button>
+            <div class="result" id="task3Result"></div>
+        </div>
+        
+        <!-- Задание 4 -->
+        <div class="task" id="task4">
+            <h2>Задание 4: Резюме с CSS</h2>
+            <div class="resume-section">
+                <img src="file:///C:/Users/MAXIMUM/Downloads/photo_5289838479926229377_y.jpg" alt="Фото" class="resume-photo">
+                <h3>Иванов</h3>
+                <p>Веб-разработчик</p>
+                
+                <div class="input-group">
+                    <input type="text" id="lastNameInput" placeholder="Введите новую фамилию">
+                    <button onclick="changeLastName()">Изменить фамилию</button>
+                </div>
+                
+                <div class="input-group">
+                    <button onclick="changeBackground()">Изменить цвет фона</button>
+                </div>
+                
+                <div class="skills">
+                    <h3>Навыки</h3>
+                    <ul>
+                        <li>HTML5</li>
+                        <li>CSS3</li>
+                        <li>JavaScript</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Задание 5 -->
+        <div class="task" id="task5">
+            <h2>Задание 5: Анкета с проверкой</h2>
+            <div id="form">
+                <label for="name">Имя:</label>
+                <input type="text" id="name" placeholder="Только текст"><br>
+                
+                <label for="age">Возраст:</label>
+                <input type="number" id="age" placeholder="Неотрицательное число"><br>
+                
+                <label for="gender">Пол:</label>
+                <select id="gender">
+                    <option value="M">М</option>
+                    <option value="Ж">Ж</option>
+                </select><br>
+                
+                <label>Навыки:</label><br>
+                <input type="checkbox" id="math"> Знание математики<br>
+                <input type="checkbox" id="prog"> Знание программирования<br>
+                <input type="checkbox" id="design"> Дизайн<br>
+                
+                <button onclick="checkForm()">Проверить</button>
+            </div>
+            
+            <div id="formResult" class="hidden">
+                <h3>Результат проверки</h3>
+                <p id="resultText"></p>
+            </div>
+        </div>
+        
+        <!-- Задание 6 -->
+        <div class="task" id="task6">
+            <h2>Задание 6: Интерактивное резюме</h2>
+            <div class="interactive-resume">
+                <div class="section">
+                    <h3>Опыт работы</h3>
+                    <button class="toggle-btn" onclick="toggleContent('experience')">Показать/скрыть</button>
+                    <div id="experience" class="toggle-content">
+                        <p><strong>Веб-разработчик</strong> (2020-настоящее время)</p>
+                        <p>Компания: ООО "Технологии"</p>
+                        <p>Обязанности: Разработка клиентской части веб-приложений</p>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h3>Образование</h3>
+                    <button class="toggle-btn" onclick="toggleContent('education')">Показать/скрыть</button>
+                    <div id="education" class="toggle-content">
+                        <p><strong>Университет</strong> (2016-2020)</p>
+                        <p>Специальность: Информатика</p>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h3>Контакты</h3>
+                    <button class="toggle-btn" onclick="toggleContent('contacts')">Показать/скрыть</button>
+                    <div id="contacts" class="toggle-content">
+                        <p>Email: example@example.com</p>
+                        <p>Телефон: +7 (123) 456-78-90</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Дополнительные задания -->
+        <div class="task" id="extraTasks">
+            <h2>Дополнительные задания</h2>
+            
+            <h3>1. Калькулятор</h3>
+            <div class="calculator">
+                <div class="calculator-display" id="calcDisplay">0</div>
+                <button class="calculator-btn" onclick="appendToDisplay('7')">7</button>
+                <button class="calculator-btn" onclick="appendToDisplay('8')">8</button>
+                <button class="calculator-btn" onclick="appendToDisplay('9')">9</button>
+                <button class="calculator-btn" onclick="appendToDisplay('+')">+</button>
+                <button class="calculator-btn" onclick="appendToDisplay('4')">4</button>
+                <button class="calculator-btn" onclick="appendToDisplay('5')">5</button>
+                <button class="calculator-btn" onclick="appendToDisplay('6')">6</button>
+                <button class="calculator-btn" onclick="appendToDisplay('-')">-</button>
+                <button class="calculator-btn" onclick="appendToDisplay('1')">1</button>
+                <button class="calculator-btn" onclick="appendToDisplay('2')">2</button>
+                <button class="calculator-btn" onclick="appendToDisplay('3')">3</button>
+                <button class="calculator-btn" onclick="appendToDisplay('*')">×</button>
+                <button class="calculator-btn" onclick="appendToDisplay('0')">0</button>
+                <button class="calculator-btn" onclick="clearDisplay()">C</button>
+                <button class="calculator-btn" onclick="calculate()">=</button>
+                <button class="calculator-btn" onclick="appendToDisplay('/')">÷</button>
+            </div>
+            
+            <h3>2. Слайдер</h3>
+            <div class="slider-container">
+                <input type="range" min="0" max="9" value="0" class="slider" id="myRange">
+                <p>Значение: <span id="sliderValue">0</span></p>
+                <button onclick="setSliderValue(0)">0</button>
+                <button onclick="setSliderValue(1)">1</button>
+                <button onclick="setSliderValue(2)">2</button>
+                <button onclick="setSliderValue(3)">3</button>
+                <button onclick="setSliderValue(4)">4</button>
+                <button onclick="setSliderValue(5)">5</button>
+                <button onclick="setSliderValue(6)">6</button>
+                <button onclick="setSliderValue(7)">7</button>
+                <button onclick="setSliderValue(8)">8</button>
+                <button onclick="setSliderValue(9)">9</button>
+            </div>
+            
+            <h3>3. Генератор титульного листа</h3>
+            <div class="title-page-form">
+                <label for="department">Кафедра:</label>
+                <input type="text" id="department"><br>
+                
+                <label for="group">Группа:</label>
+                <input type="text" id="group"><br>
+                
+                <label for="teacher">ФИО преподавателя:</label>
+                <input type="text" id="teacher"><br>
+                
+                <label for="student">ФИО студента:</label>
+                <input type="text" id="student"><br>
+                
+                <button onclick="generateTitlePage()">Сгенерировать титульный лист</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Задание 1: Функции min, max и equal
+        function min(a, b) {
+            return a < b ? a : b;
+        }
+        
+        function max(a, b) {
+            return a > b ? a : b;
+        }
+        
+        function equal(a, b) {
+            return a === b;
+        }
+        
+        function runMinFunction() {
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+            const result = min(num1, num2);
+            document.getElementById('task1Result').innerHTML = `Минимум: ${result}`;
+        }
+        
+        function runMaxFunction() {
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+            const result = max(num1, num2);
+            document.getElementById('task1Result').innerHTML = `Максимум: ${result}`;
+        }
+        
+        function runEqualFunction() {
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+            const result = equal(num1, num2);
+            document.getElementById('task1Result').innerHTML = `Числа равны: ${result}`;
+        }
+        
+        // Задание 2: Переменные admin и name
+        function runAdminNameTask() {
+            let name = "Алексей";
+            let admin = name;
+            document.getElementById('task2Result').innerHTML = `Значение переменной admin: "${admin}"`;
+        }
+        
+        // Задание 3: Проверка возраста
+        function checkAge() {
+            let age;
+            let confirmed = false;
+            
+            do {
+                age = prompt("Сколько вам лет?", "");
+                if (age === null) {
+                    document.getElementById('task3Result').innerHTML = "Вы отменили ввод возраста";
+                    return;
+                }
+                
+                confirmed = confirm(`Вы уверены, что вам ${age}?`);
+                if (!confirmed) {
+                    alert("Давайте попробуем еще раз");
+                }
+            } while (!confirmed);
+            
+            document.getElementById('task3Result').innerHTML = `Ваш возраст: ${age}`;
+        }
+        
+        // Задание 4: Резюме с CSS
+        function changeLastName() {
+            const input = document.getElementById('lastNameInput');
+            const lastNameElement = document.querySelector('#task4 h3');
+            lastNameElement.textContent = `Иван ${input.value}`;
+        }
+        
+        function changeBackground() {
+            const colors = ['#f5f5f5', '#e6f7ff', '#ffe6e6', '#e6ffe6', '#f0e6ff'];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            document.getElementById('task4').style.backgroundColor = randomColor;
+        }
+        
+        // Задание 5: Анкета с проверкой
+        function checkForm() {
+            const name = document.getElementById('name').value;
+            const age = document.getElementById('age').value;
+            const gender = document.getElementById('gender').value;
+            const math = document.getElementById('math').checked;
+            const prog = document.getElementById('prog').checked;
+            const design = document.getElementById('design').checked;
+            
+            // Проверка ввода
+            if (!name || !name.match(/^[а-яА-ЯёЁa-zA-Z\s]+$/)) {
+                alert('Имя должно содержать только буквы!');
+                return;
+            }
+            
+            if (!age || age < 0) {
+                alert('Возраст должен быть положительным числом!');
+                return;
+            }
+            
+            // Проверка условий
+            let result = '';
+            if (math && prog) {
+                result = 'Вас возьмут на работу! (Есть знание математики и программирования)';
+            } else if (math || prog) {
+                result = 'Возможно, вас возьмут (Есть одно из требуемых навыков)';
+            } else {
+                result = 'К сожалению, вас не возьмут (Нет требуемых навыков)';
+            }
+            
+            document.getElementById('resultText').textContent = result;
+            document.getElementById('formResult').classList.remove('hidden');
+        }
+        
+        // Задание 6: Интерактивное резюме
+        function toggleContent(id) {
+            const content = document.getElementById(id);
+            if (content.style.display === 'block') {
+                content.style.display = 'none';
+            } else {
+                content.style.display = 'block';
+            }
+        }
+        
+        // Дополнительные задания
+        
+        // Калькулятор
+        let currentDisplay = '0';
+        
+        function appendToDisplay(value) {
+            if (currentDisplay === '0' && value !== '.') {
+                currentDisplay = value;
+            } else {
+                currentDisplay += value;
+            }
+            document.getElementById('calcDisplay').textContent = currentDisplay;
+        }
+        
+        function clearDisplay() {
+            currentDisplay = '0';
+            document.getElementById('calcDisplay').textContent = currentDisplay;
+            document.getElementById('calcDisplay').style.backgroundColor = '';
+        }
+        
+        function calculate() {
+            try {
+                const result = eval(currentDisplay);
+                currentDisplay = result.toString();
+                document.getElementById('calcDisplay').textContent = currentDisplay;
+                
+                if (result > 15) {
+                    document.getElementById('calcDisplay').style.backgroundColor = '#ffcccc';
+                } else {
+                    document.getElementById('calcDisplay').style.backgroundColor = '';
+                }
+            } catch (error) {
+                currentDisplay = 'Ошибка';
+                document.getElementById('calcDisplay').textContent = currentDisplay;
+            }
+        }
+        
+        // Слайдер
+        const slider = document.getElementById("myRange");
+        const sliderValue = document.getElementById("sliderValue");
+        
+        slider.oninput = function() {
+            sliderValue.textContent = this.value;
+            if (this.value > 5) {
+                document.body.style.backgroundColor = '#ffcccc';
+            } else {
+                document.body.style.backgroundColor = '#f5f5f5';
+            }
+        }
+        
+        function setSliderValue(value) {
+            slider.value = value;
+            sliderValue.textContent = value;
+            slider.oninput(); // Вызываем обработчик вручную
+        }
+        
+        // Генератор титульного листа
+        function generateTitlePage() {
+            const department = document.getElementById('department').value || 'Кафедра информатики';
+            const group = document.getElementById('group').value || 'ИСТ-101';
+            const teacher = document.getElementById('teacher').value || 'Иванов И.И.';
+            const student = document.getElementById('student').value || 'Петров П.П.';
+            
+            const titlePage = `
+                <!DOCTYPE html>
+                <html lang="ru">
+                <head>
+                    <meta charset="UTF-8">
+                    <title>Титульный лист</title>
+                    <style>
+                        body { font-family: Times New Roman; margin: 2cm; }
+                        .title { text-align: center; margin-top: 3cm; }
+                        .right { text-align: right; margin-top: 3cm; }
+                        .center { text-align: center; margin-top: 1cm; }
+                    </style>
+                </head>
+                <body>
+                    <div class="right">
+                        <p>Преподаватель: ${teacher}</p>
+                        <p>Студент: ${student}</p>
+                        <p>Группа: ${group}</p>
+                    </div>
+                    
+                    <div class="title">
+                        <h1>МИНИСТЕРСТВО ОБРАЗОВАНИЯ И НАУКИ</h1>
+                        <h2>${department.toUpperCase()}</h2>
+                        <h3>ОТЧЕТ</h3>
+                        <h3>по лабораторной работе №3</h3>
+                    </div>
+                    
+                    <div class="center" style="margin-top: 5cm;">
+                        <p>${new Date().getFullYear()} г.</p>
+                    </div>
+                </body>
+                </html>
+            `;
+            
+            const newWindow = window.open('', '_blank');
+            newWindow.document.write(titlePage);
+        }
+    </script>
+</body>
+</html>
